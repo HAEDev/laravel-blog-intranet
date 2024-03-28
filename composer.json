@@ -1,0 +1,33 @@
+{
+    "name": "haedev/laravel-blog",
+    "description": "A complete Blog module, with category, tag, and images",
+    "authors": [
+        {
+            "name": "Tom Lynch",
+            "email": "tom@lnch.co.uk"
+        }
+    ],
+    "licence": "MIT",
+    "minimum-stability": "dev",
+    "require": {
+        "doctrine/dbal": "^2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lnch\\LaravelBlog\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lnch\\LaravelBlog\\LaravelBlogServiceProvider"
+            ],
+			"aliases": {
+				"LaravelBlog": "Lnch\\LaravelBlog\\LaravelBlogFacade"
+			}
+        }
+    }
+}
