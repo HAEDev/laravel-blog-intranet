@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Lnch\LaravelBlog\Models\BlogImage;
 use Illuminate\Http\UploadedFile;
 use Lnch\LaravelBlog\Requests\BlogImageRequest;
+use Validator;
 
 class BlogImageController extends Controller
 {
@@ -219,9 +220,31 @@ class BlogImageController extends Controller
      * @throws \Exception
      */
     public function dialogUpload(Request $request)
-    {
+    {   
+        /*
+            Validate
+        */
+        $mimes = config("laravel-blog.images.mimes", "jpeg,jpg,png");
+        $maxSize = config("laravel-blog.images.max_upload_size", 0);
+        
+        $validator = Validator::make($request->all(), [
+            'upload' => 'required|image|mimes:' . $mimes . '|max:' . $maxSize
+        ]);
+
+        $errors = $validator->errors();
+        $messages = $errors->getMessages();
+            
+        if (isset($messages["upload"])) {
+            echo "<div style='color: #c41e3e;'>" . implode("<br />", $messages["upload"]) . "</div>";
+            exit;
+        }
+        
+        /*
+            Upload
+        */
         $files = request()->file('upload');
         $error_bag = [];
+        
         foreach (is_array($files) ? $files : [$files] as $file)
         {
             $new_filename = $this->uploadFile($file, $request);
