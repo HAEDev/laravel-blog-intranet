@@ -32,9 +32,6 @@ class BlogImageRequest extends FormRequest
             case 'POST':
                 $rules['images'] = 'required|array';
                 $rules['images.*'] = 'image';
-                
-                $mimes = config("laravel-blog.images.mimes", "jpeg,jpg,png");
-                $rules['images.*'] .= "|mimes:$mimes";
 
                 $maxSize = config("laravel-blog.images.max_upload_size", 0);
                 if (is_numeric($maxSize) && $maxSize > 0)

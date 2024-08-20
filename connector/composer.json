@@ -1,0 +1,15 @@
+{
+    "name": "jodit/connector",
+    "description": "Jodit FileBrowser and Uploader connector",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chupurnov Valeriy",
+            "email": "chupurnov@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "jodit/application": ">=3.0.41"
+    }
+}

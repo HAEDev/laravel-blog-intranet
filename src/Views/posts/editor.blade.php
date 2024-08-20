@@ -15,8 +15,6 @@
 
     </div> <!-- End .row -->
 
-    @if(config("laravel-blog.init_editor", true))
-        {!! LaravelBlog::initCKEditor() !!}
-    @endif
+    @include("laravel-blog::init_jodit_editor")
 
 @endsection

@@ -169,40 +169,6 @@ return [
         'per_page'          => 10,
 
         /*
-         * CKEditor related options
-         */
-        'ckeditor' => [
-
-            /*
-             * Path to the CKEditor JS file. CDN is used by default
-             */
-            'path'              => 'https://cdn.ckeditor.com/4.7.3/standard-all/ckeditor.js',
-
-            /*
-             * Location of a custom config file for CKEditor. Relative to public path
-             */
-            'custom_config'     => '/vendor/lnch/laravel-blog/js/ckeditor_config.js',
-
-            /*
-             * Route for the custom file browser. Relative to your 'route_prefix' defined
-             * above
-             */
-            'file_browser_url'  => 'images?laravel-blog-embed=true',
-
-            'image_upload_url'  => 'images/dialog-upload',
-
-        ],
-
-        /*
-         *  By default, the editor will be initialised automatically. If it needs to be initialised elsewhere,
-         *  due to vue for example, set to false.
-         *
-         * Editor can be initialised in a view with {!! LaravelBlog::initCKEditor() !!}
-         */
-
-        'init_editor' => true,
-
-        /*
          * By default all posts, scheduled or current will be shown together.
          */
         'separate_scheduled' => false
