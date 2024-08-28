@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Storage;
 use Lnch\LaravelBlog\Models\BlogHelper;
 use Lnch\LaravelBlog\Models\BlogPost;
 use Lnch\LaravelBlog\Models\Comment;
-use Lnch\LaravelBlog\Requests\BlogPostRequest;
 
 class BlogController extends Controller
 {
