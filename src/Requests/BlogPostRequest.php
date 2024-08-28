@@ -4,6 +4,7 @@ namespace Lnch\LaravelBlog\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Lnch\LaravelBlog\Models\BlogPost;
+use App\Repositories\Tenants\TenantsRepository;
 
 class BlogPostRequest extends FormRequest
 {
@@ -39,6 +40,7 @@ class BlogPostRequest extends FormRequest
         $rules = [];
 
         $statuses = implode(",", array_keys(BlogPost::statuses()));
+        $tenantsRepository = resolve(TenantsRepository::class);
 
         $rules = array_merge($rules, [
             'title'             => 'required|string|max:190',
@@ -52,7 +54,9 @@ class BlogPostRequest extends FormRequest
             'tags.*'            => 'string|max:190',
             'is_featured'       => 'sometimes|boolean',
             'attached_files'    => 'sometimes|array|nullable',
-            'show_featured'     => 'sometimes|boolean'
+            'show_featured'     => 'sometimes|boolean',
+            'tenants'           => 'array',
+            'tenants.*'         => "in:" . implode(',', $tenantsRepository->getAll()->pluck("id")->toArray()),
         ]);
 
         $siteId = getBlogSiteID();
